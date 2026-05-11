@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="App Store Connect 技术支持网站 — 提供 App 提交、TestFlight、证书配置、内购设置等常见问题的解决方案与最佳实践指南。">
+    <title>App Store Connect 技术支持</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                    <rect width="32" height="32" rx="7" fill="#007AFF"/>
+                    <path d="M16 6L18.5 13.5H26L19.5 18L21.5 25.5L16 21L10.5 25.5L12.5 18L6 13.5H13.5L16 6Z" fill="white"/>
+                </svg>
+                <span>ASC Support</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#guides">指南</a></li>
+                <li><a href="#issues">常见问题</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#resources">资源</a></li>
+            </ul>
+            <button class="hamburger" aria-label="菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>App Store Connect 技术支持</h1>
+            <p class="hero-subtitle">解决 App 提交、审核、证书配置、TestFlight、内购等常见问题</p>
+            <div class="hero-search">
+                <input type="text" id="searchInput" placeholder="搜索问题，如：证书过期、TestFlight 邀请、审核被拒...">
+                <button id="searchBtn" aria-label="搜索">搜索</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><strong>50+</strong><span>解决方案</span></div>
+                <div class="stat"><strong>10+</strong><span>详细指南</span></div>
+                <div class="stat"><strong>20+</strong><span>常见问答</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="quick-grid">
+                <a href="#certificates" class="quick-card">
+                    <span class="icon">&#128274;</span>
+                    <h3>证书与签名</h3>
+                    <p>证书过期、配置文件、Code Signing</p>
+                </a>
+                <a href="#testflight" class="quick-card">
+                    <span class="icon">&#9992;</span>
+                    <h3>TestFlight</h3>
+                    <p>测试邀请、版本管理、崩溃收集</p>
+                </a>
+                <a href="#review" class="quick-card">
+                    <span class="icon">&#128269;</span>
+                    <h3>App 审核</h3>
+                    <p>被拒原因、加速审核、审核指南</p>
+                </a>
+                <a href="#iap" class="quick-card">
+                    <span class="icon">&#128184;</span>
+                    <h3>内购与订阅</h3>
+                    <p>IAP 配置、沙盒测试、价格设置</p>
+                </a>
+                <a href="#upload" class="quick-card">
+                    <span class="icon">&#128228;</span>
+                    <h3>构建与上传</h3>
+                    <p>Xcode 上传、Transporter、构建失败</p>
+                </a>
+                <a href="#account" class="quick-card">
+                    <span class="icon">&#128100;</span>
+                    <h3>账户与权限</h3>
+                    <p>角色分配、团队管理、Apple ID</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides Section -->
+    <section id="guides" class="guides">
+        <div class="container">
+            <h2>操作指南</h2>
+            <p class="section-desc">从零开始，逐步掌握 App Store Connect 的关键操作流程</p>
+
+            <div class="guide-grid">
+                <div class="guide-card" id="guide-submit">
+                    <span class="guide-step">01</span>
+                    <h3>App 首次提交完整流程</h3>
+                    <ol>
+                        <li>在 App Store Connect 创建 App 记录（Bundle ID 需与 Xcode 一致）</li>
+                        <li>在 Xcode 中配置签名证书与 Provisioning Profile</li>
+                        <li>Archive 项目并上传至 App Store Connect</li>
+                        <li>填写 App 元数据：名称、描述、关键词、截图（至少 6.5 英寸和 5.5 英寸）</li>
+                        <li>设置定价与销售范围</li>
+                        <li>添加 App 隐私标签（Privacy Nutrition Label）</li>
+                        <li>提交审核 — 等待 24-48 小时</li>
+                    </ol>
+                </div>
+
+                <div class="guide-card" id="guide-testflight">
+                    <span class="guide-step">02</span>
+                    <h3>TestFlight 内测 / 公测配置</h3>
+                    <ol>
+                        <li>上传构建版本后，在 TestFlight 标签页等待"合规性"状态变为就绪</li>
+                        <li>如出现"缺少合规证明"，在构建的"Test Information"中填写出口合规信息</li>
+                        <li>创建内部测试组（团队内成员，无需审核）或外部测试组（需审核）</li>
+                        <li>外部测试：填写测试说明、Beta App 审核信息，首次提交需通过 Beta 审核</li>
+                        <li>添加测试员邮箱，发送邀请链接</li>
+                        <li>测试员通过 TestFlight App 安装并反馈</li>
+                    </ol>
+                </div>
+
+                <div class="guide-card" id="guide-iap">
+                    <span class="guide-step">03</span>
+                    <h3>内购 (In-App Purchase) 设置</h3>
+                    <ol>
+                        <li>在 App Store Connect → 功能 → 内购项目 → 创建</li>
+                        <li>选择类型：消耗型 / 非消耗型 / 自动续期订阅 / 非续期订阅</li>
+                        <li>填写产品 ID（与代码中一致）、参考名称、定价</li>
+                        <li>添加至少一种订阅时长（订阅类）的定价</li>
+                        <li>添加本地化显示名称和描述</li>
+                        <li>上传审核截图（确认购买、登录、订阅页面）</li>
+                        <li>提交审核时确保 IAP 状态为"准备提交"</li>
+                    </ol>
+                </div>
+
+                <div class="guide-card" id="guide-cert">
+                    <span class="guide-step">04</span>
+                    <h3>证书与 Provisioning Profile 管理</h3>
+                    <ol>
+                        <li>开发证书：用于真机调试（Development）</li>
+                        <li>发布证书：用于 App Store / Ad Hoc 分发（Distribution）</li>
+                        <li>在 Apple Developer 网站 → Certificates 创建证书（CSR 通过钥匙串生成）</li>
+                        <li>创建 App ID（需与 Xcode Bundle ID 匹配，启用所需 Capability）</li>
+                        <li>创建 Provisioning Profile：关联证书 + App ID + 设备（开发版）</li>
+                        <li>推荐使用 Xcode 自动签名管理，减少手动配置出错概率</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Issues Section -->
+    <section id="issues" class="issues">
+        <div class="container">
+            <h2>常见问题排查</h2>
+            <p class="section-desc">按类别查找解决方案</p>
+
+            <!-- Certificates -->
+            <div class="issue-category" id="certificates">
+                <h3>证书与签名</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>证书已过期 / "Certificate has expired"</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>开发证书或发布证书的有效期为 1 年，到期后需重新生成。</p>
+                            <p><strong>解决步骤：</strong></p>
+                            <ol>
+                                <li>登录 <a href="https://developer.apple.com" target="_blank" rel="noopener">Apple Developer</a></li>
+                                <li>进入 Certificates, Identifiers & Profiles</li>
+                                <li>删除已过期的证书</li>
+                                <li>使用钥匙串 → 证书助理 → 从证书颁发机构请求证书，生成新 CSR</li>
+                                <li>上传 CSR 创建新证书，下载并双击安装</li>
+                                <li>在 Xcode → Signing & Capabilities 中刷新配置文件</li>
+                            </ol>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>"No signing certificate 'iOS Distribution' found"</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>本地缺少有效的发布证书，或证书未关联到当前 Xcode 项目。</p>
+                            <p><strong>解决步骤：</strong></p>
+                            <ol>
+                                <li>确保在 Apple Developer 账号中存在有效的 iOS Distribution 证书</li>
+                                <li>如存在但本地没有，可在开发者网站下载后双击安装</li>
+                                <li>在 Xcode → Settings → Accounts 中刷新 Apple ID 配置</li>
+                                <li>检查 Signing & Capabilities 中选择了正确的 Team</li>
+                                <li>建议启用 "Automatically manage signing"</li>
+                            </ol>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>Provisioning Profile 不包含当前设备 UDID</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>开发版 Provisioning Profile 需要注册设备 UDID 才能安装。</p>
+                            <p><strong>解决步骤：</strong></p>
+                            <ol>
+                                <li>在 Apple Developer → Devices 中添加新设备 UDID（通过 Xcode Window → Devices 获取）</li>
+                                <li>编辑对应的 Provisioning Profile，勾选新添加的设备</li>
+                                <li>下载新的 Profile 或让 Xcode 自动同步</li>
+                            </ol>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- TestFlight -->
+            <div class="issue-category" id="testflight">
+                <h3>TestFlight 相关问题</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>构建版本显示"缺少合规证明"</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>App 使用了加密技术但未声明出口合规信息。</p>
+                            <p><strong>解决步骤：</strong></p>
+                            <ol>
+                                <li>App Store Connect → TestFlight → 选择构建版本</li>
+                                <li>点击 "Test Information" 旁边的编辑</li>
+                                <li>找到"出口合规证明"部分</li>
+                                <li>如果仅使用系统加密库（HTTPS 等），选择"是，使用加密但适用豁免"</li>
+                                <li>如果完全不使用加密，选择"否"</li>
+                            </ol>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>测试员收不到 TestFlight 邀请邮件</summary>
+                        <div class="issue-solution">
+                            <p><strong>排查要点：</strong></p>
+                            <ul>
+                                <li>确认邮箱地址无误，且测试员 Apple ID 与此邮箱关联</li>
+                                <li>让测试员检查垃圾邮件文件夹</li>
+                                <li>在 App Store Connect → TestFlight → 测试员列表中查看邀请状态</li>
+                                <li>可点击"重新发送邀请"</li>
+                                <li>外部测试需先通过 Beta App 审核才能发送邀请</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>TestFlight 版本过期无法安装</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>TestFlight 构建版本有效期为上传后 90 天。</p>
+                            <p><strong>解决：</strong>上传新的构建版本，过期后将自动不可用。建议定期更新构建以保持测试连续性。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- App Review -->
+            <div class="issue-category" id="review">
+                <h3>App 审核常见被拒原因</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>Guideline 2.1 - App 完成度不足（崩溃、占位符、死链）</summary>
+                        <div class="issue-solution">
+                            <p><strong>解决：</strong></p>
+                            <ul>
+                                <li>彻底测试所有页面和功能流程</li>
+                                <li>删除所有占位符内容和 TODO 标记</li>
+                                <li>确保所有外部链接可正常访问</li>
+                                <li>提交前使用 TestFlight 多轮内测</li>
+                                <li>使用 Xcode Organizer 检查崩溃日志</li>
+                            </ul>
+                            <p><strong>Appeal 策略：</strong>在解决方案中心提供详细的复现步骤说明和已修复的截图。</p>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>Guideline 4.2 - 最低功能要求（功能过于简单）</summary>
+                        <div class="issue-solution">
+                            <p><strong>常见触发场景：</strong>套壳网页 App、纯模板 App、无实质交互功能。</p>
+                            <p><strong>解决：</strong></p>
+                            <ul>
+                                <li>增加原生功能模块（推送通知、相机、定位等合理使用）</li>
+                                <li>提供有意义的用户交互和内容</li>
+                                <li>WebView App 需要有足够的原生功能和离线能力</li>
+                                <li>确保 App 提供持续的、有价值的使用体验</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>Guideline 5.1.1 - 隐私数据收集与声明</summary>
+                        <div class="issue-solution">
+                            <p><strong>解决：</strong></p>
+                            <ul>
+                                <li>App Store Connect → App 隐私标签必须如实填写</li>
+                                <li>需要隐私政策 URL（即使是个人开发者也必须提供）</li>
+                                <li>收集数据前必须获得用户明确同意（ATT 框架）</li>
+                                <li>不得在用户拒绝授权后仍追踪或收集数据</li>
+                                <li>检查第三方 SDK 是否存在静默数据收集</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>Guideline 3.1.1 - 内购支付违规（绕过 IAP）</summary>
+                        <div class="issue-solution">
+                            <p><strong>规则核心：</strong>数字内容/服务必须使用 Apple IAP，不可引导用户使用第三方支付。</p>
+                            <ul>
+                                <li>实体商品/服务 → 可用第三方支付（电商、打车、外卖）</li>
+                                <li>数字内容（会员、课程、虚拟币、解锁功能）→ 必须 IAP</li>
+                                <li>不得在 App 内出现支付宝、微信支付等第三方支付字样或跳转链接</li>
+                                <li>阅读器 App（书籍、音视频）可申请 External Link Account 授权</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Upload Issues -->
+            <div class="issue-category" id="upload">
+                <h3>构建上传问题</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>ITMS-90424: Invalid Swift Support</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>App 包含 Swift 代码但缺少必要的 Swift 支持文件。</p>
+                            <p><strong>解决：</strong>确保 Xcode Build Settings 中 <code>ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES</code> 设置为 <code>YES</code>，且 Deployment Target ≥ iOS 13。</p>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>ITMS-90078: Missing Push Notification Entitlement</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>App 使用了推送通知 API 但未在 Capabilities 中启用 Push Notifications。</p>
+                            <p><strong>解决：</strong></p>
+                            <ol>
+                                <li>Xcode → Signing & Capabilities → + Capability → Push Notifications</li>
+                                <li>确保 App ID 在开发者网站上已启用 Push Notifications 能力</li>
+                                <li>如有需要，重新生成 Provisioning Profile</li>
+                            </ol>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>ITMS-90713: Missing Info.plist key (Privacy)</summary>
+                        <div class="issue-solution">
+                            <p><strong>原因：</strong>iOS 14+ 要求在使用特定权限时在 Info.plist 中提供使用说明。</p>
+                            <p><strong>常见缺失 Keys：</strong></p>
+                            <ul>
+                                <li><code>NSCameraUsageDescription</code></li>
+                                <li><code>NSPhotoLibraryUsageDescription</code></li>
+                                <li><code>NSLocationWhenInUseUsageDescription</code></li>
+                                <li><code>NSMicrophoneUsageDescription</code></li>
+                                <li><code>NSUserTrackingUsageDescription</code></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- IAP Issues -->
+            <div class="issue-category" id="iap">
+                <h3>内购与订阅</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>IAP 商品列表加载失败 / SKProductsRequest 无返回</summary>
+                        <div class="issue-solution">
+                            <p><strong>排查清单：</strong></p>
+                            <ol>
+                                <li>IAP 产品 ID 必须与代码中完全一致（区分大小写）</li>
+                                <li>产品必须在 App Store Connect 中状态为"准备提交"或"已批准"</li>
+                                <li>必须签署 Paid Applications Agreement（协议、税务和银行业务）</li>
+                                <li>必须填写银行和税务信息</li>
+                                <li>沙盒测试账号需在 App Store Connect → 用户和访问 → 沙箱测试员中创建</li>
+                                <li>测试设备需退出正式 Apple ID，使用沙盒账号登录（设置 → App Store → 沙箱账号）</li>
+                                <li>产品创建后可能需要数小时才能在沙盒环境中生效</li>
+                            </ol>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>沙盒环境订阅无法取消 / 续订周期过慢</summary>
+                        <div class="issue-solution">
+                            <p><strong>说明：</strong></p>
+                            <ul>
+                                <li>沙盒订阅会自动续订但有限次数（通常 6 次后取消）</li>
+                                <li>沙盒订阅周期加速：1 个月 → 5 分钟，1 年 → 1 小时</li>
+                                <li>在设备"设置 → App Store → 沙箱账号 → 管理订阅"中管理</li>
+                                <li>使用 App Store Connect 的"订阅管理"查看沙盒购买记录</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>Server-to-Server 通知未收到</summary>
+                        <div class="issue-solution">
+                            <p><strong>排查：</strong></p>
+                            <ul>
+                                <li>检查 App Store Connect → App → 通用信息 → App Store 服务器通知 URL 是否正确</li>
+                                <li>服务器必须支持 HTTPS，TLS ≥ 1.2</li>
+                                <li>查看服务器日志确认是否收到 App Store 的验证请求</li>
+                                <li>使用 App Store Connect 中的"发送测试通知"功能验证</li>
+                                <li>确保服务器防火墙 / 安全组允许 Apple IP 段访问</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Account -->
+            <div class="issue-category" id="account">
+                <h3>账户与权限</h3>
+                <div class="issue-list">
+                    <details class="issue-item">
+                        <summary>App Store Connect 无法登录 / 二次验证问题</summary>
+                        <div class="issue-solution">
+                            <ul>
+                                <li>确保 Apple ID 开启了双重认证（这是强制要求）</li>
+                                <li>生成 App 专用密码：appleid.apple.com → 登录与安全 → App 专用密码</li>
+                                <li>Xcode / Transporter 上传需使用 App 专用密码，而非 Apple ID 主密码</li>
+                                <li>频繁登录失败可能导致账户临时锁定（等待 24 小时自动解锁）</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="issue-item">
+                        <summary>团队成员看不到 App / 缺少必要权限</summary>
+                        <div class="issue-solution">
+                            <p><strong>App Store Connect 角色说明：</strong></p>
+                            <ul>
+                                <li><strong>Account Holder：</strong>唯一最高权限，签署法律协议</li>
+                                <li><strong>Admin：</strong>管理团队成员和大部分操作</li>
+                                <li><strong>App Manager：</strong>管理 App 的元数据、定价、提交审核</li>
+                                <li><strong>Developer：</strong>上传构建、管理 TestFlight</li>
+                                <li><strong>Marketing：</strong>管理 App Store 产品页素材</li>
+                                <li><strong>Sales：</strong>查看销售和趋势报告</li>
+                                <li><strong>Finance：</strong>查看付款和财务报告</li>
+                            </ul>
+                            <p>在 App Store Connect → 用户和访问 → 用户 → 添加用户来分配角色。</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>常见问答 (FAQ)</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>审核一般需要多长时间？</h4>
+                    <p>正常审核周期为 24-48 小时。新 App 首次提交可能更长（3-5 天）。如遇节假日或特殊时期可能延迟。紧急修复可申请 <a href="https://developer.apple.com/contact/app-store/?topic=expedite" target="_blank" rel="noopener">加急审核</a>。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>App 被拒后如何申诉？</h4>
+                    <p>在 App Store Connect → 解决方案中心 回复审核团队，说明具体情况。也可通过 <a href="https://developer.apple.com/app-store/review/" target="_blank" rel="noopener">App Review Board</a> 提交正式申诉。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>App 名称被占用怎么办？</h4>
+                    <p>App 名称在每个地区唯一。如果名称已被占用，可以：添加副标题、使用不同拼写、或等待占用者下架（超过 180 天未更新的 App 可能被移除）。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>iOS 开发者账号价格是多少？</h4>
+                    <p>个人/组织账号：$99/年。企业账号（Enterprise）：$299/年。企业账号用于内部分发（In-House），不可提交至 App Store。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>能否自己测试 IAP 而不产生真实扣费？</h4>
+                    <p>可以。使用沙盒测试员账号登录设备后，所有 IAP 交易均为沙盒环境，不会产生真实扣费。测试卡号不可用，真实绑定的支付方式在沙盒环境也不会扣款。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>App 大小限制是多少？</h4>
+                    <p>通过蜂窝网络下载的 App 包大小限制为 200MB（压缩后）。超过此限制需通过 Wi-Fi 下载。使用按需资源 (On-Demand Resources) 可减小初始安装包大小。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>App Transfer（转让人）如何操作？</h4>
+                    <p>在 App Store Connect → App 信息 → App 转让。需满足条件：所有内购状态为"已批准"、没有 TestFlight 测试进行中、两个账号均已接受最新协议。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>如何获取上一年度的财务报告？</h4>
+                    <p>App Store Connect → 趋势和报告 → 财务报告。可导出每月或每年的详细财务数据。付款信息在"协议、税务和银行业务"中查看。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Error Code Reference -->
+    <section id="error-codes" class="error-codes">
+        <div class="container">
+            <h2>常见错误代码速查</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>错误码</th>
+                            <th>含义</th>
+                            <th>快速解决</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ITMS-90022</code></td>
+                            <td>缺少必需的图标文件</td>
+                            <td>确保 Assets.xcassets 包含所有尺寸的 App Icon</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90078</code></td>
+                            <td>缺少推送通知授权</td>
+                            <td>在 Capabilities 中启用 Push Notifications</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90034</code></td>
+                            <td>签名无效或缺失</td>
+                            <td>检查证书是否有效，Profile 是否匹配</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90129</code></td>
+                            <td>无用的架构或位码问题</td>
+                            <td>确保使用最新 Xcode 和正确 Build Settings</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90338</code></td>
+                            <td>非公共 API 使用</td>
+                            <td>移除私有 API 调用，检查第三方 SDK</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90535</code></td>
+                            <td>使用了不被允许的第三方 SDK</td>
+                            <td>更新或替换违规 SDK 版本</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90683</code></td>
+                            <td>Info.plist 缺少必要字段</td>
+                            <td>补全所有必需的 plist 键值对</td>
+                        </tr>
+                        <tr>
+                            <td><code>ITMS-90713</code></td>
+                            <td>缺少隐私使用说明</td>
+                            <td>在 Info.plist 中添加对应权限说明文案</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2>官方资源与工具</h2>
+            <div class="resource-grid">
+                <a href="https://appstoreconnect.apple.com" target="_blank" rel="noopener" class="resource-card">
+                    <h4>App Store Connect 官网</h4>
+                    <p>管理 App、查看分析、回复评价</p>
+                </a>
+                <a href="https://developer.apple.com/documentation/appstoreconnectapi" target="_blank" rel="noopener" class="resource-card">
+                    <h4>App Store Connect API</h4>
+                    <p>自动化构建上传、TestFlight 管理、元数据更新</p>
+                </a>
+                <a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener" class="resource-card">
+                    <h4>App 审核指南</h4>
+                    <p>官方完整版审核规则中文翻译</p>
+                </a>
+                <a href="https://developer.apple.com/testflight/" target="_blank" rel="noopener" class="resource-card">
+                    <h4>TestFlight 官方文档</h4>
+                    <p>Beta 测试完整说明</p>
+                </a>
+                <a href="https://help.apple.com/app-store-connect/" target="_blank" rel="noopener" class="resource-card">
+                    <h4>App Store Connect 帮助</h4>
+                    <p>Apple 官方帮助中心</p>
+                </a>
+                <a href="https://developer.apple.com/contact/" target="_blank" rel="noopener" class="resource-card">
+                    <h4>联系 Apple 开发者支持</h4>
+                    <p>审核状态咨询、技术问题、合同问题</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">ASC Support</span>
+                    <p>非官方 App Store Connect 技术支持资源站</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>指南</h4>
+                        <a href="#guide-submit">App 提交</a>
+                        <a href="#guide-testflight">TestFlight</a>
+                        <a href="#guide-iap">内购配置</a>
+                        <a href="#guide-cert">证书管理</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>问题排查</h4>
+                        <a href="#certificates">证书签名</a>
+                        <a href="#review">审核被拒</a>
+                        <a href="#upload">构建上传</a>
+                        <a href="#iap">内购订阅</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>外部链接</h4>
+                        <a href="https://developer.apple.com" target="_blank" rel="noopener">Apple Developer</a>
+                        <a href="https://appstoreconnect.apple.com" target="_blank" rel="noopener">App Store Connect</a>
+                        <a href="https://developer.apple.com/forums/" target="_blank" rel="noopener">开发者论坛</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ASC Support. 本站为非官方技术资源，所有商标归 Apple Inc. 所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" aria-label="返回顶部">&uarr;</button>
+
+    <!-- Search Overlay -->
+    <div id="searchOverlay" class="search-overlay" hidden>
+        <div class="search-overlay-content">
+            <button id="closeSearch" class="close-btn" aria-label="关闭搜索">&times;</button>
+            <h3>搜索结果</h3>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
